@@ -1,0 +1,418 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+$xl: "screen and (min-width: 1200px)";
+$lg: "screen and (min-width: 992px)";
+$md: "screen and (min-width: 768px)";
+$sm: "screen and (min-width: 576px)";
+
+$pinkColor: rgb(234, 76, 137);
+$fontColor: lighten(#333, 15);
+$lightColor: rgb(229, 232, 243);
+
+$textShadow: 1px 1px darken($lightColor, 8), -1px -1px lighten($lightColor, 2),
+  2px 2px 6px rgba(0, 0, 0, 0.3), -1px -1px 6px rgba(255, 255, 255, 1);
+
+$boxShadow: inset -0.5px -0.5px darken($lightColor, 5),
+  inset 0.7px 0.7px lighten($lightColor, 7), 13px 13px 20px #c3c7ca,
+  -1px -1px 7px -1px #efefef;
+
+$buttonShadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+  inset -4px -4px 8px rgba(255, 255, 255, 0.4),
+  0.5px 0.5px lighten($pinkColor, 17), -0.5px -0.5px lighten($pinkColor, 25),
+  8px 8px 12px -2px rgba(0, 0, 0, 0.2),
+  -8px -8px 12px -2px rgba(255, 255, 255, 0.7);
+
+$buttonShadowHover: inset 5px 5px 8px rgba(0, 0, 0, 0.25),
+  inset -5px -5px 8px rgba(255, 255, 255, 0.45),
+  0.5px 0.5px lighten($pinkColor, 17), -0.5px -0.5px lighten($pinkColor, 25),
+  9px 9px 13px -1px rgba(0, 0, 0, 0.25),
+  -9px -9px 13px -1px rgba(255, 255, 255, 0.9);
+
+%circleButton {
+  width: 45px;
+  height: 45px;
+  background: $pinkColor;
+  border-radius: 50%;
+  color: #efefef;
+  cursor: pointer;
+  box-shadow: $buttonShadow;
+  transition: all 0.2s;
+  &:disabled {
+    opacity: 0.4;
+    cursor: auto;
+  }
+
+  &:disabled:hover {
+    box-shadow: $buttonShadow;
+    color: #efefef;
+  }
+
+  &:hover {
+    box-shadow: $buttonShadowHover;
+    color: #fff;
+  }
+}
+
+@mixin startBasicStyle($delay) {
+  transition-duration: 0.7s;
+  transition-property: opacity, transform;
+  transition-delay: $delay;
+  opacity: 0;
+  transform: translateY(-25px);
+}
+
+@mixin finishBasicStyle() {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 15px;
+  &-thumb {
+    box-shadow: inset 0 0 15px 15px rgba(110, 110, 110, 0.4);
+    border: solid 5px transparent;
+    border-radius: 1.3em;
+  }
+  &-track {
+    box-shadow: inset 0 0 15px 15px transparent;
+    border: solid 5px transparent;
+  }
+}
+
+body {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: $fontColor;
+  font-family: "Montserrat", sans-serif;
+  font-display: fallback;
+  position: relative;
+  background: $lightColor;
+
+  @media #{$sm} {
+    font-size: 15px;
+  }
+
+  @media #{$lg} {
+    font-size: 14px;
+  }
+}
+
+i {
+  pointer-events: none;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  background: transparent;
+  text-decoration: none;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input::placeholder {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:active,
+button:focus,
+input:active,
+input:focus,
+select:active,
+select:focus,
+textarea:active,
+textarea:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.text--bold {
+  font-weight: 600;
+}
+
+// BASIC STYLE FOR SECTION
+
+.section__title {
+  font-weight: 400;
+  font-size: 2.5em;
+  color: darken($lightColor, 5);
+  letter-spacing: 1px;
+  padding-right: 0.1em;
+
+  @media #{$sm} {
+    font-size: 2.7em;
+  }
+
+  @media #{$md} {
+    font-size: 3em;
+  }
+
+  @media #{$lg} {
+    font-size: 3.3em;
+  }
+}
+
+.section__wrapper {
+  margin-top: 1em;
+  @media #{$md} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.section__box {
+  margin-bottom: 2em;
+  border-radius: 1em;
+  box-shadow: $boxShadow;
+  background: lighten($lightColor, 1);
+  width: 100%;
+}
+
+.section__subtitle {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+.section__content {
+  padding: 0.9em;
+}
+
+.section__control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  label {
+    width: 100%;
+    padding: 1em 0em 0.2em 0em;
+    line-height: 1.5;
+  }
+
+  input,
+  select {
+    padding: 0.5em 0.6em;
+    box-shadow: inset 7px 7px 8px darken($lightColor, 5),
+      inset -7px -7px 8px #efefef;
+    border-radius: 0.8em;
+    margin: 0.55em 0em;
+  }
+
+  input {
+    margin-right: 1.35em;
+  }
+
+  .unit {
+    font-size: 0.9em;
+  }
+}
+
+.section__button {
+  margin: 1.2em 0.5em 0.2em 0em;
+  display: flex;
+  justify-content: flex-end;
+
+  @media #{$lg} {
+    width: 100%;
+  }
+
+  button {
+    @extend %circleButton;
+  }
+}
+
+.section__text {
+  padding: 0.3em 0em;
+  line-height: 1.7;
+}
+
+.section__result {
+  padding: 0.9em;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid rgba(50, 50, 50, 0.1);
+  font-size: 0.95em;
+  .result {
+    color: $pinkColor;
+    padding: 0.2em 0em;
+    font-weight: 600;
+  }
+}
+
+.section__error {
+  padding: 0.9em;
+  line-height: 1.7;
+  border-top: 3px solid rgba(50, 50, 50, 0.1);
+  font-size: 0.95em;
+}
+
+// HOME SECTION
+
+.home {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+
+  @media #{$lg} {
+    padding: 2em;
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    margin: 0.5em 0em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media #{$lg} {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  &__content {
+    line-height: 1.5;
+    color: $fontColor;
+    text-align: right;
+    margin-left: 0.3em;
+    @media #{$sm} {
+      margin-left: 3em;
+    }
+  }
+
+  &__text {
+    font-size: 0.9em;
+  }
+
+  &__subtitle {
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
+
+.home__link {
+  display: block;
+  width: 100%;
+  border-radius: 1em;
+  box-shadow: $boxShadow;
+  background: lighten($lightColor, 1);
+  margin: 0.7em 0em;
+  padding: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+
+  &:nth-child(1) {
+    @include startBasicStyle(0.2s);
+  }
+
+  &:nth-child(2) {
+    @include startBasicStyle(0.3s);
+  }
+
+  &:nth-child(3) {
+    @include startBasicStyle(0.5s);
+  }
+
+  @media #{$md} {
+    width: 48%;
+    margin: 1em 0em;
+  }
+
+  @media #{$lg} {
+    width: 90%;
+  }
+
+  &:last-child {
+    @media #{$md} {
+      width: 100%;
+    }
+    @media #{$lg} {
+      width: 90%;
+    }
+  }
+
+  i {
+    font-size: 3.2em;
+    padding: 0em 0.5em 0em 0.4em;
+    color: darken($lightColor, 1);
+    text-shadow: $textShadow;
+  }
+}
+
+.header {
+  padding: 0.1em 0em;
+  text-align: right;
+
+  @media #{$lg} {
+    margin-bottom: 0.7em;
+    text-align: left;
+    padding: 0.3em;
+  }
+
+  .section__title {
+    font-size: 3em;
+    @media #{$lg} {
+      font-size: 4em;
+    }
+    @media #{$xl} {
+      font-size: 5em;
+    }
+  }
+
+  @include startBasicStyle(0s);
+}
+
+.footer {
+  text-align: right;
+  font-weight: 400;
+  color: $fontColor;
+  line-height: 1.5;
+  font-size: 0.9em;
+  a {
+    text-decoration: none;
+    color: darken($fontColor, 8);
+  }
+
+  @include startBasicStyle(0.6s);
+
+  @media #{$lg} {
+    position: absolute;
+    bottom: 0.4em;
+    right: 0.4em;
+  }
+}
+
+.home--active {
+  .header,
+  .home__link,
+  .footer {
+    @include finishBasicStyle();
+  }
+}
