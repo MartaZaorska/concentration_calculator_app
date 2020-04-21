@@ -416,3 +416,143 @@ textarea:focus {
     @include finishBasicStyle();
   }
 }
+
+// CONVERSION SECTION
+
+.conversion {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+
+  @media #{$lg} {
+    padding: 2em;
+  }
+
+  .section__title {
+    margin-bottom: 0.6em;
+    text-align: right;
+    @include startBasicStyle(0s);
+  }
+
+  .section__box {
+    @include startBasicStyle(0.2s);
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    font-size: 2.3em;
+    padding: 0.5em 0em;
+    color: darken($lightColor, 1);
+    text-shadow: $textShadow;
+
+    @media #{$sm} {
+      justify-content: flex-start;
+      margin-left: 80px;
+    }
+  }
+}
+
+.mass_conversion,
+.volume_conversion {
+  padding: 0.9em;
+
+  @media #{$md} {
+    width: 48%;
+    margin-bottom: 2em;
+  }
+
+  @media #{$xl} {
+    width: 25%;
+    height: auto;
+  }
+
+  .section__content {
+    padding: 0em;
+  }
+}
+
+.concentration_conversion {
+  @media #{$xl} {
+    width: 42%;
+  }
+
+  @media #{$lg} {
+    .section__box {
+      .section__content {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .section__control:nth-child(1) {
+        width: 100%;
+      }
+      .section__control:nth-child(3),
+      .section__control:nth-child(4) {
+        width: auto;
+      }
+    }
+  }
+}
+
+.concentration_conversion--molar {
+  .section__control:nth-child(3) input {
+    width: 42%;
+    @media #{$sm} {
+      width: auto;
+    }
+  }
+}
+
+.conversion--active {
+  .section__title,
+  .section__box {
+    @include finishBasicStyle();
+  }
+}
+
+//RADIO BUTTON
+
+.radio__button {
+  padding: 0.6em 0em;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.9em;
+
+  .label {
+    margin-right: 1em;
+  }
+
+  .spin {
+    width: 40px;
+    height: 20px;
+    position: relative;
+    margin-right: 1em;
+    .dot {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      background: $pinkColor;
+      box-shadow: $buttonShadow;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      transition: all 0.2s;
+    }
+    .stripe {
+      display: block;
+      margin-top: 5px;
+      width: 100%;
+      height: 10px;
+      box-shadow: 0.5px 0.5px rgb(237, 245, 245),
+        -0.5px -0.5px rgb(167, 177, 183), inset 2px 2px 10px rgba(0, 0, 0, 0.15),
+        inset -2px -2px 10px rgb(245, 245, 245);
+      border-radius: 0.8em;
+    }
+  }
+  &--right .spin .dot {
+    left: 20px;
+  }
+}
