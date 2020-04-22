@@ -27,3 +27,28 @@ export const concentrationConversion = (
     ? (conc * updatedDensity) / (100 * molarMass)
     : (conc * 100 * molarMass) / updatedDensity;
 };
+
+export const percentageConcentration = (concStart, concFinish, amount) => {
+  return ((concFinish * amount) / 100) * (100 / concStart);
+};
+
+export const molarConcentration = (
+  conc,
+  concUnit,
+  amount,
+  molarMass,
+  physicalState,
+  concPercentage,
+  density
+) => {
+  let value = amount * 0.001 * conc * molarMass;
+  if (physicalState === "liquid") {
+    value =
+      concUnit === "mM"
+        ? (((value * 100) / concPercentage) * 0.001) / density
+        : (value * 100) / concPercentage / density;
+  } else {
+    value = concUnit === "mM" ? value : value * 1000;
+  }
+  return value;
+};
