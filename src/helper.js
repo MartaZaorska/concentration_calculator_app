@@ -52,3 +52,27 @@ export const molarConcentration = (
   }
   return value;
 };
+
+export const percentageDose = (
+  activeSubstance,
+  solventSubstance,
+  dose,
+  weight,
+  numObject,
+  amountSolution
+) => {
+  const conc = (activeSubstance / solventSubstance) * 100;
+  const dosePerObject = (weight * dose) / 1000;
+  const cr = (dosePerObject / amountSolution) * 100;
+  const amountForAll = numObject * amountSolution;
+  return ((cr * amountForAll) / 100) * (100 / conc);
+};
+
+export const molarDose = (molarMass, dose, weight, physicalState, density) => {
+  const molarPerObject = (weight * dose) / 1000;
+  let value = molarPerObject * molarMass;
+  if (physicalState === "liquid") {
+    value = value / (density * 1000);
+  }
+  return value;
+};

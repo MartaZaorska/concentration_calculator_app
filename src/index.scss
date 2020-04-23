@@ -596,3 +596,68 @@ textarea:focus {
     @include finishBasicStyle();
   }
 }
+
+// DOSE SECTION
+
+.dose {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+
+  @media #{$lg} {
+    padding: 2em;
+  }
+
+  .percentage_dose,
+  .molar_dose {
+    @media #{$lg} {
+      width: 48%;
+    }
+  }
+
+  .section__title {
+    margin-bottom: 0.6em;
+    text-align: right;
+    @include startBasicStyle(0s);
+  }
+
+  .section__box {
+    @include startBasicStyle(0.3s);
+  }
+
+  .section__subtitle {
+    margin-bottom: 0em;
+  }
+}
+
+.dose--active {
+  .section__title,
+  .section__box {
+    @include finishBasicStyle();
+  }
+}
+
+// DOSE INPUT
+
+.dose__input {
+  input {
+    width: 25%;
+    margin-right: 0.6em;
+  }
+  .text {
+    margin: 0em 0.6em;
+  }
+}
+
+.molar_dose,
+.percentage_dose--liquid {
+  .section__control:nth-child(4) input {
+    width: 30%;
+  }
+}
+
+.percentage_dose--solid {
+  .section__control:nth-child(5) input {
+    width: 30%;
+  }
+}
