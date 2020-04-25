@@ -34,10 +34,10 @@ function Home() {
         <Link to="/dose" className="home__link">
           <i className="fas fa-vial"></i>
           <section className="home__content">
-            <h3 className="home__subtitle">Dawki leku</h3>
+            <h3 className="home__subtitle">Dawki</h3>
             <p className="home__text">
-              Oblicz jaką ilość leku i&nbsp;rozpuszczalnika należy połączyć aby
-              otrzymać dawkę odpowiednią dla określonego celu.
+              Oblicz jaką ilość leku / substancji i&nbsp;rozpuszczalnika należy
+              połączyć aby otrzymać dawkę odpowiednią dla określonego celu.
             </p>
           </section>
         </Link>

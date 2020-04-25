@@ -67,14 +67,14 @@ function ConcentrationConversion() {
           label="Masa molowa"
           value={molarMass}
           setValue={setMolarMass}
-          unitValue="g/mol"
+          unitValue="g / mol"
         />
         <ControlItem
           label="Gęstość"
           value={density}
           setValue={setDensity}
           sup={true}
-          unitValue="g/cm"
+          unitValue="g / cm"
         />
         <div className="section__button">
           <button onClick={conversionHandler} disabled={disabledButton}>
@@ -88,7 +88,7 @@ function ConcentrationConversion() {
             <ResultItem
               name="Stężenie molowe"
               result={result}
-              unit="mol/dm"
+              unit="mol / dm"
               sup={true}
             />
           ) : (

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import classNames from "classnames";
 import { amountToFixed, percentageDose } from "../../helper";
 
-import DoseInput from "./DoseInput";
 import RadioButton from "../RadioButton";
 import ControlItem from "../ControlItem";
 import ResultItem from "../ResultItem";
@@ -73,36 +72,32 @@ function PercentageDose() {
       })}
     >
       <section className="section__content">
-        <h4 className="section__subtitle">W stężeniu procentowym</h4>
+        <h4 className="section__subtitle">Dawka - lek</h4>
         <RadioButton
           value={physicalState}
           setValue={setPhysicalState}
           options={OPTIONS}
           label="Postać leku"
         />
-        {physicalState === "liquid" ? (
-          <DoseInput value={activeSubstance} setValue={setActiveSubstance} />
-        ) : (
-          <>
-            <ControlItem
-              label="Ilość substancji czynnej w jednej tabletce"
-              value={activeSubstance}
-              setValue={setActiveSubstance}
-              unitValue="mg"
-            />
-            <ControlItem
-              label="Ilość substancji w jakiej rozpuszczono tabletkę"
-              value={solventSubstance}
-              setValue={setSolventSubstance}
-              unitValue="ml"
-            />
-          </>
-        )}
+        <ControlItem
+          label="Ilość substancji czynnej (A)"
+          value={activeSubstance}
+          setValue={setActiveSubstance}
+          unitValue={physicalState === "liquid" ? "mg / ml" : "mg"}
+        />
+        {physicalState === "solid" ? (
+          <ControlItem
+            label="Objętość rozpuszczalnika (A)"
+            value={solventSubstance}
+            setValue={setSolventSubstance}
+            unitValue="ml"
+          />
+        ) : null}
         <ControlItem
           label="Dawka"
           value={dose}
           setValue={setDose}
-          unitValue="mg/1 kg masy ciała"
+          unitValue="mg / kg masy ciała"
         />
         <ControlItem
           label="Waga badanego obiektu"
@@ -111,13 +106,13 @@ function PercentageDose() {
           unitValue="g"
         />
         <ControlItem
-          label="Ilość badanych obiektów"
+          label="Liczba badanych obiektów"
           value={numObject}
           setValue={setNumObject}
           unitValue=""
         />
         <ControlItem
-          label="Ilość roztworu jaką chcemy podać pojedyńczemu obiektowi"
+          label="Objętość pojedyńczej dawki"
           value={amountSolution}
           setValue={setAmountSolution}
           unitValue="ml"
@@ -131,12 +126,12 @@ function PercentageDose() {
       {result.length !== 0 ? (
         <section className="section__result">
           <ResultItem
-            name={`Ilość leku jaką należy pobrać dla ${numObject} obiektów`}
+            name={`Objętość roztworu (A) jaką należy pobrać dla ${numObject} obiektów`}
             result={result}
             unit="ml"
           />
           <ResultItem
-            name="Ilość rozpuszczalnika jaką należy dodać do pobranego leku"
+            name="Objętość rozpuszczalnika (B) jaką należy użyć do rozcieńczenia pobranego roztworu (A)"
             result={`${amountToFixed(
               parseFloat(numObject * amountSolution) - parseFloat(result)
             )}`}

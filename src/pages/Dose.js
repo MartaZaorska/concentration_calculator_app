@@ -9,7 +9,7 @@ function Dose() {
   useAnimationSection("dose");
   return (
     <section className="dose">
-      <HeaderPage title="Dawki leku" />
+      <HeaderPage title="Dawki" />
       <section className="section__wrapper">
         <PercentageDose />
         <MolarDose />

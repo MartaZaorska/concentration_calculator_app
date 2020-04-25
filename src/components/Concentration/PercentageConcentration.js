@@ -36,19 +36,19 @@ function PercentageConcentration() {
       <section className="section__content">
         <h4 className="section__subtitle">Procentowe</h4>
         <ControlItem
-          label="Stężenie początkowe"
+          label="Stężenie wyjściowe"
           value={concStart}
           setValue={setConcStart}
           unitValue="%"
         />
         <ControlItem
-          label="Ilość roztworu jaką chcemy otrzymać"
+          label="Objętość końcowa"
           value={amount}
           setValue={setAmount}
           unitValue="ml"
         />
         <ControlItem
-          label="Stężenie jakie chcemy otrzymać"
+          label="Stężenie końcowe"
           unitValue="%"
           value={concFinish}
           setValue={setConcFinish}
@@ -63,7 +63,7 @@ function PercentageConcentration() {
         <section className="section__result">
           <ResultItem name="Ilość substancji" result={result} unit="ml" />
           <ResultItem
-            name="Ilość rozpuszczalnika"
+            name="Objętość rozpuszczalnika"
             result={`${amountToFixed(parseFloat(amount) - parseFloat(result))}`}
             unit="ml"
           />

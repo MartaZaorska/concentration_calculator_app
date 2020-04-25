@@ -60,36 +60,36 @@ function MolarConcentration() {
           options={OPTIONS}
         />
         <ControlItem
-          label="Masa molowa roztworu"
+          label="Masa molowa substancji"
           value={molarMass}
           setValue={setMolarMass}
-          unitValue="g/mol"
+          unitValue="g / mol"
         />
         {physicalState === "liquid" ? (
           <>
             <ControlItem
-              label="Stężenie procentowe roztworu"
+              label="Stężenie wyjściowe"
               value={concPercentage}
               setValue={setConcPercentage}
               unitValue="%"
             />
             <ControlItem
-              label="Gęstość roztworu"
+              label="Gęstość substancji"
               value={density}
               setValue={setDensity}
-              unitValue="g/cm"
+              unitValue="g / cm"
               sup={true}
             />
           </>
         ) : null}
         <ControlItem
-          label="Ilość jaką chcemy otrzymać"
+          label="Objętość końcowa"
           value={amount}
           setValue={setAmount}
           unitValue="ml"
         />
         <ControlItem
-          label="Stężenie molowe jakie chcemy otrzymać"
+          label="Stężenie końcowe"
           value={conc}
           setValue={setConc}
           unitValue={concUnit}
@@ -105,7 +105,7 @@ function MolarConcentration() {
       {result.length !== 0 ? (
         <section className="section__result">
           {physicalState === "solid" ? (
-            <ResultItem unit="mg" name="Ilość substancji" result={result} />
+            <ResultItem unit="mg" name="Masa substancji" result={result} />
           ) : (
             <ResultItem unit="ml" name="Ilość substancji" result={result} />
           )}
@@ -115,7 +115,7 @@ function MolarConcentration() {
                 ? amount
                 : `${amountToFixed(parseFloat(amount) - parseFloat(result))}`
             }
-            name="Ilość rozpuszczalnika"
+            name="Objętość rozpuszczalnika"
             unit="ml"
           />
         </section>

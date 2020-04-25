@@ -41,24 +41,23 @@ function MolarDose() {
   return (
     <section className="section__box molar_dose">
       <section className="section__content">
-        <h4 className="section__subtitle">W stężeniu molowym</h4>
+        <h4 className="section__subtitle">Dawka - substancja</h4>
         <RadioButton
           value={physicalState}
           setValue={setPhysicalState}
           options={OPTIONS}
-          label="Postać leku"
         />
         <ControlItem
-          label="Masa molowa leku"
+          label="Masa molowa substancji"
           value={molarMass}
           setValue={setMolarMass}
-          unitValue="g/mol"
+          unitValue="g / mol"
         />
         <ControlItem
           label="Dawka"
           value={dose}
           setValue={setDose}
-          unitValue="mmol/1 kg masy ciała"
+          unitValue="mmol / kg masy ciała"
         />
         <ControlItem
           label="Waga badanego obiektu"
@@ -68,10 +67,10 @@ function MolarDose() {
         />
         {physicalState === "liquid" ? (
           <ControlItem
-            label="Gęstość leku"
+            label="Gęstość"
             value={density}
             setValue={setDensity}
-            unitValue="g/cm"
+            unitValue="g / cm"
             sup={true}
           />
         ) : null}
@@ -85,13 +84,13 @@ function MolarDose() {
         <section className="section__result">
           {physicalState === "liquid" ? (
             <ResultItem
-              name="Ilość leku jaką należy pobrać dla jedengo obiektu"
+              name="Objętość substancji dla pojedyńczej dawki"
               result={result}
               unit="ml"
             />
           ) : (
             <ResultItem
-              name="Masa leku jaką należy pobrać dla jednego obiektu"
+              name="Masa substancji dla pojedyńczej dawki"
               result={result}
               unit="mg"
             />
