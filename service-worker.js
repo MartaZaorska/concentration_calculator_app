@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/concentration_calculator_app/precache-manifest.8f12816825b39cbfb9cbdcaa08130877.js"
+  "/concentration_calculator_app/precache-manifest.a30499d7df8e821c1d1cabf9553c3617.js"
 );
 
 self.addEventListener('message', (event) => {
